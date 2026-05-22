@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N.SGA PREMIUM🇻🇳</title>
+    <!-- Font Orbitron mang phong cách công nghệ sắc nét -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-primary: #00f3ff;
+            --neon-danger: #ff003c;
+            --bg-color: #090a0f;
+            --panel-bg: rgba(10, 15, 25, 0.9);
+            --font-main: 'Orbitron', sans-serif;
+            --font-text: 'Rajdhani', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: #fff;
+            font-family: var(--font-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Container chính */
+        .menu-container {
+            width: 420px;
+            background: var(--panel-bg);
+            border: 2px solid var(--neon-primary);
+            box-shadow: 0 0 15px var(--neon-primary), inset 0 0 15px rgba(0, 243, 255, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Góc nhọn viền trang trí */
+        .menu-container::before, .menu-container::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 2px solid var(--neon-primary);
+            transition: all 0.3s ease;
+        }
+        .menu-container::before {
+            top: -5px; left: -5px;
+            border-right: none; border-bottom: none;
+        }
+        .menu-container::after {
+            bottom: -5px; right: -5px;
+            border-left: none; border-top: none;
+        }
+
+        /* Header */
+        .menu-header {
+            text-align: center;
+            padding: 20px 10px;
+            border-bottom: 2px solid var(--neon-primary);
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        .title {
+            font-family: var(--font-main);
+            font-size: 24px;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .ip-badge {
+            font-size: 14px;
+            font-family: var(--font-main);
+            color: var(--neon-primary);
+            text-shadow: 0 0 5px var(--neon-primary);
+        }
+
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--neon-primary);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px 0;
+            background: transparent;
+            color: #fff;
+            border: none;
+            border-right: 2px solid var(--neon-primary);
+            font-family: var(--font-main);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .tab-btn:last-child {
+            border-right: none;
+        }
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--neon-primary);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-primary);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            padding: 25px;
+            display: none;
+            min-height: 250px;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* UI Tab 1: Giới thiệu */
+        .info-box {
+            border: 1px solid var(--neon-primary);
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            background: rgba(0, 243, 255, 0.05);
+        }
+        .info-box:hover {
+            background: rgba(0, 243, 255, 0.2);
+            box-shadow: inset 0 0 10px var(--neon-primary);
+        }
+        .info-box i {
+            font-size: 24px;
+            color: var(--neon-primary);
+            margin-right: 15px;
+        }
+        .info-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .info-label {
+            font-family: var(--font-main);
+            font-size: 12px;
+            color: #aaa;
+        }
+        .info-value {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* UI Tab 2: Form & Trạng thái */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-family: var(--font-main);
+            display: block;
+            margin-bottom: 8px;
+            color: var(--neon-primary);
+        }
+        .input-box {
+            width: 100%;
+            background: transparent;
+            border: 2px solid var(--neon-primary);
+            color: #fff;
+            padding: 12px 15px;
+            font-family: var(--font-main);
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .input-box:focus {
+            box-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            border: 2px solid var(--neon-primary);
+            color: var(--neon-primary);
+            font-family: var(--font-main);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .btn:hover {
+            background: var(--neon-primary);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-primary);
+        }
+
+        /* Loading */
+        .loader-container {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 243, 255, 0.2);
+            border-top: 4px solid var(--neon-primary);
+            margin: 0 auto 15px auto;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Trạng thái lỗi */
+        .error-container {
+            display: none;
+            text-align: center;
+            border: 2px solid var(--neon-danger);
+            padding: 20px;
+            background: rgba(255, 0, 60, 0.1);
+            box-shadow: 0 0 15px var(--neon-danger);
+        }
+        .error-container i {
+            color: var(--neon-danger);
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .error-text {
+            color: var(--neon-danger);
+            font-family: var(--font-main);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Trạng thái thành công */
+        .success-container {
+            display: none;
+            text-align: center;
+        }
+        .success-text {
+            font-family: var(--font-main);
+            color: #0f0;
+            text-shadow: 0 0 10px #0f0;
+            font-size: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #0f0;
+            padding: 10px;
+            background: rgba(0, 255, 0, 0.1);
+        }
+
+        /* Thông báo (Toast) */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--neon-primary);
+            color: #000;
+            font-family: var(--font-main);
+            padding: 10px 20px;
+            font-weight: 700;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 100;
+            box-shadow: 0 0 15px var(--neon-primary);
+        }
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+            bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-container" id="main-app">
+        <div class="menu-header">
+            <h1 class="title">N.SGA PREMIUM🇻🇳</h1>
+            <div class="ip-badge"><i class="fas fa-network-wired"></i> IP DEVICE: <span id="ip-display">Đang kiểm tra...</span></div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tab1', this)">GIỚI THIỆU</button>
+            <button class="tab-btn" onclick="switchTab('tab2', this)">ĐĂNG NHẬP KEY</button>
+        </div>
+
+        <!-- TAB 1: Giới thiệu -->
+        <div id="tab1" class="tab-content active">
+            <div class="info-box" onclick="copyToClipboard('username_amdau126', 'Tiktok')">
+                <i class="fab fa-tiktok"></i>
+                <div class="info-details">
+                    <span class="info-label">TIKTOK CHANNEL</span>
+                    <span class="info-value">username_amdau126</span>
+                </div>
+            </div>
+            
+            <div class="info-box" onclick="copyToClipboard('https://www.facebook.com/ngotansang11', 'Facebook')">
+                <i class="fab fa-facebook-square"></i>
+                <div class="info-details">
+                    <span class="info-label">FACEBOOK PROFILE</span>
+                    <span class="info-value">ngotansang11</span>
+                </div>
+            </div>
+            <p style="text-align: center; color: #888; font-size: 13px; margin-top: 15px;">* Nhấn vào thông tin để sao chép</p>
+        </div>
+
+        <!-- TAB 2: Xác thực KEY -->
+        <div id="tab2" class="tab-content">
+            
+            <!-- Trạng thái nhập Key -->
+            <div id="auth-form">
+                <div class="form-group">
+                    <label><i class="fas fa-key"></i> NHẬP ACCESS KEY</label>
+                    <input type="text" id="key-input" class="input-box" placeholder="Nhập key tại đây...">
+                </div>
+                <button class="btn" onclick="verifyKey()">XÁC NHẬN</button>
+            </div>
+
+            <!-- Loading Effect -->
+            <div id="loading-ui" class="loader-container">
+                <div class="spinner"></div>
+                <div style="font-family: var(--font-main); color: var(--neon-primary); text-shadow: 0 0 5px var(--neon-primary);">ĐANG THIẾT LẬP KẾT NỐI...</div>
+            </div>
+
+            <!-- Trạng thái Lỗi -->
+            <div id="error-ui" class="error-container">
+                <i class="fas fa-radiation-alt"></i>
+                <div class="error-text">XIN LỖI, KEY KHÔNG ĐÚNG!</div>
+                <div style="font-size: 14px; margin-bottom: 5px;">Hệ thống tự động kick ra khỏi App sau:</div>
+                <div class="countdown" id="countdown-timer">5</div>
+            </div>
+
+            <!-- Trạng thái Thành công -->
+            <div id="success-ui" class="success-container">
+                <div class="success-text">
+                    <i class="fas fa-check-circle"></i> Đã cài đặt và thiết lập cấu hình vào IP:<br>
+                    <strong id="success-ip">...</strong>
+                </div>
+                
+                <button class="btn" onclick="openScheme('freefireth://')">
+                    <i class="fas fa-play"></i> MỞ FREEFIRE THƯỜNG
+                </button>
+                <button class="btn" onclick="openScheme('freefiremax://')">
+                    <i class="fas fa-play-circle"></i> MỞ FREEFIRE MAX
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Thông báo chớp nhoáng (Toast) -->
+    <div id="toast" class="toast">Đã sao chép!</div>
+
+    <script>
+        let currentIP = "127.0.0.1"; // Default fallback
+
+        // Tự động Check IP khi load trang
+        window.onload = () => {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    currentIP = data.ip;
+                    document.getElementById('ip-display').innerText = currentIP;
+                })
+                .catch(error => {
+                    document.getElementById('ip-display').innerText = "Không thể lấy IP";
+                });
+        };
+
+        // Hàm chuyển Tab
+        function switchTab(tabId, btn) {
+            // Reset active classes
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(button => button.classList.remove('active'));
+            
+            // Set active class
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // Hàm sao chép vào Clipboard
+        function copyToClipboard(text, type) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Đã sao chép ' + type + '!');
+            }).catch(err => {
+                showToast('Lỗi sao chép!');
+            });
+        }
+
+        // Hiển thị Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Hàm kiểm tra Key
+        function verifyKey() {
+            const keyInput = document.getElementById('key-input').value.trim();
+            const correctKey = "tansang-090411";
+            
+            const authForm = document.getElementById('auth-form');
+            const loadingUi = document.getElementById('loading-ui');
+            const errorUi = document.getElementById('error-ui');
+            const successUi = document.getElementById('success-ui');
+
+            // Hiệu ứng Loading nét, góc cạnh
+            authForm.style.display = 'none';
+            loadingUi.style.display = 'block';
+
+            setTimeout(() => {
+                loadingUi.style.display = 'none';
+
+                if (keyInput === correctKey) {
+                    // Key đúng
+                    successUi.style.display = 'block';
+                    document.getElementById('success-ip').innerText = currentIP;
+                } else {
+                    // Key sai
+                    errorUi.style.display = 'block';
+                    let timeLeft = 5;
+                    const timerElement = document.getElementById('countdown-timer');
+                    
+                    const countdownInterval = setInterval(() => {
+                        timeLeft--;
+                        timerElement.innerText = timeLeft;
+                        if (timeLeft <= 0) {
+                            clearInterval(countdownInterval);
+                            kickUser();
+                        }
+                    }, 1000);
+                }
+            }, 1800); // 1.8s để thể hiện sự xử lý hệ thống
+        }
+
+        // Xử lý khi kick
+        function kickUser() {
+            document.body.innerHTML = `
+                <div style="text-align:center; color: var(--neon-danger); font-family: var(--font-main);">
+                    <i class="fas fa-skull-crossbones" style="font-size: 60px; margin-bottom: 20px;"></i>
+                    <h1 style="text-shadow: 0 0 20px var(--neon-danger);">CONNECTION TERMINATED</h1>
+                    <p style="margin-top: 10px;">Bạn đã bị hệ thống đẩy ra ngoài do nhập sai Key.</p>
+                </div>
+            `;
+            // Tuỳ chọn đóng trình duyệt (Chỉ hoạt động ở một số môi trường cụ thể)
+            setTimeout(() => { window.close(); }, 2000);
+        }
+
+        // Mở game qua Scheme URL
+        function openScheme(schemeUrl) {
+            window.location.href = schemeUrl;
+        }
+    </script>
+</body>
+</html>
