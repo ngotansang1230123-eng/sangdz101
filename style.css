@@ -1,0 +1,338 @@
+:root {
+    --bg-dark: #07070c;
+    --panel-bg: rgba(15, 15, 25, 0.7);
+    --neon-blue: #00f3ff;
+    --neon-pink: #ff007f;
+    --neon-purple: #9d00ff;
+    --text-color: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    font-family: 'Rajdhani', sans-serif;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: radial-gradient(circle at 50% 50%, #120a2b 0%, #050508 100%);
+    overflow-x: hidden;
+}
+
+/* Khung Menu chính */
+.neon-wrapper {
+    background: var(--panel-bg);
+    width: 100%;
+    max-width: 550px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    box-shadow: 0 0 25px rgba(0, 243, 255, 0.1), inset 0 0 15px rgba(0, 243, 255, 0.05);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    position: relative;
+}
+
+/* Hệ thống Tabs điều hướng */
+.tab-control {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 10px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: #64748b;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.tab-btn.active {
+    color: var(--neon-blue);
+    text-shadow: 0 0 8px var(--neon-blue);
+    border-bottom: 2px solid var(--neon-blue);
+}
+
+/* Nội dung Tab */
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Định dạng tiêu đề chữ Neon */
+.neon-text-blue {
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 5px;
+}
+
+.neon-text-pink {
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 15px;
+}
+
+.sub-text {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+/* Các thẻ MXH */
+.social-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.social-card.facebook {
+    border: 1px solid rgba(0, 243, 255, 0.3);
+}
+.social-card.facebook:hover {
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+    background: rgba(0, 243, 255, 0.1);
+}
+
+.social-card.tiktok {
+    border: 1px solid var(--neon-pink);
+}
+.social-card.tiktok:hover {
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+    background: rgba(255, 0, 127, 0.1);
+}
+
+.social-card .icon {
+    font-size: 24px;
+    font-family: 'Orbitron', sans-serif;
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+.social-card .info span {
+    display: block;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.social-card .info small {
+    color: #94a3b8;
+    font-weight: normal;
+}
+
+/* Khung xác thực Key */
+.auth-container {
+    padding: 20px 0;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+#key-input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 0, 127, 0.3);
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+#key-input:focus {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+}
+
+.btn-glow {
+    background: transparent;
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+    padding: 0 20px;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-shadow: 0 0 5px var(--neon-pink);
+}
+
+.btn-glow:hover {
+    background: var(--neon-pink);
+    color: white;
+    box-shadow: 0 0 15px var(--neon-pink);
+}
+
+.error-text {
+    color: #ff4444;
+    font-size: 14px;
+    margin-top: 10px;
+    height: 18px;
+}
+
+/* Giao diện Premium sau khi mở khóa */
+.hidden { display: none !important; }
+
+.premium-badge {
+    background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink));
+    color: white;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px var(--neon-pink);
+    margin-bottom: 15px;
+}
+
+.user-meta {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid var(--neon-blue);
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+.user-meta p { margin-bottom: 5px; }
+.user-meta p:last-child { margin-bottom: 0; }
+
+.list-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* Grid danh sách tài khoản xếp cách đều đẹp mắt */
+.account-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Tùy biến thanh cuộn scrollbar phong cách Cyber */
+.account-grid::-webkit-scrollbar { width: 4px; }
+.account-grid::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+.account-grid::-webkit-scrollbar-thumb { background: var(--neon-blue); border-radius: 4px; }
+
+/* Các khối chứa Tài khoản & Mật khẩu tách biệt */
+.account-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.account-card:hover {
+    border-color: rgba(0, 243, 255, 0.3);
+    background: rgba(0, 243, 255, 0.02);
+}
+
+.clickable-field {
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.2s;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.clickable-field.user-field:hover {
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+    box-shadow: 0 0 8px rgba(0, 243, 255, 0.2);
+}
+
+.clickable-field.pass-field:hover {
+    border-color: var(--neon-purple);
+    color: #c084fc;
+    box-shadow: 0 0 8px rgba(157, 0, 255, 0.2);
+}
+
+.card-index {
+    color: #475569;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+}
+
+/* Hệ thống Toast báo Copy thành công */
+.toast-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #00f3ff;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    box-shadow: 0 0 15px var(--neon-blue);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.toast-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
